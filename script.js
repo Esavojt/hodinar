@@ -69,10 +69,15 @@ function getUpcomingLesson() {
         }
     }
 }
-getUpcomingLesson();
 
-setInterval(getUpcomingLesson, 1000);
-
+if(schedule.length != 0){
+    getUpcomingLesson();
+    setInterval(getUpcomingLesson, 1000);
+}else{
+    document.getElementById("text").innerText = "Nemáš nastavený rozvrh";
+    document.getElementById("text").style.color = "red";
+    document.getElementById("time_remaining").innerText = "Nastav si ho v nastavení";
+}
 function getActiveLesson(){
     var found = false;
     var date = new Date();
