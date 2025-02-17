@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rozvrh</title>
+
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body id="body" class="notransition">
+    <header id="header" class="notransition">
+        <script src="design.js"></script>
+
+        <div id="header_flex">
+            <h1>Hodinovník</h1>
+            <div class="emoji_group">
+                <a class="emoji" href="setup.html">⚙️</a>
+                <a class="emoji" id="change_theme" onclick="switchTheme();"></a>
+            </div>
+        </div>
+        <script>
+            handleThemeEmoji();
+        </script>
+    </header>
+        
+    <div id="content">
+        <h1>Další hodina je:</h1>
+        <p id="text"></p>
+        <p id="time_remaining"></p>
+        <br>
+        <br>
+        <h2>Právě probíhá:</h2>
+        <p id="active_lesson"></p>
+        <p id="lesson_left"></p>
+    </div>
+</body>
+</html>

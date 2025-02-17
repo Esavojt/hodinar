@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rozvrh</title>
+    <script src="setup.js" defer></script>
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body id="body" class="notransition">
+    <header id="header" class="notransition">
+        <script src="design.js"></script>
+
+        <div id="header_flex">
+            <h1>Hodinovník</h1>
+            <div class="emoji_group">
+                <a class="emoji" href="index.html">🔙</a>
+                <a class="emoji" id="change_theme" onclick="switchTheme();"></a>
+            </div>
+        </div>
+        <script>
+            handleThemeEmoji();
+        </script>
+    </header>
+        
+    <div id="content">
+        <h1>Nastavení:</h1>
+        <!-- Input in json and save to local storage -->
+        <p>Zde vlož JSON konfiguraci</p>
+        <form id="setup_form">
+            <textarea name="json" id="json_input" cols="120" rows="25"></textarea>
+            <br>
+            <input type="button" id="save_button" class="emoji" value="💾" onclick="saveJson();">
+        </form>
+    </div>
+</body>
+</html>
