@@ -101,7 +101,7 @@ function getActiveLesson(){
 
             var show_date = new Date((lesson_end_time - time) * 1000);
 
-            document.getElementByID("lesson_left").innerText = ("Zbývá: " + padNum(show_date.getUTCHours()) + ":" + padNum(show_date.getUTCMinutes()) + ":" + padNum(show_date.getUTCSeconds()));
+            document.getElementById("lesson_left").innerText = ("Zbývá: " + padNum(show_date.getUTCHours()) + ":" + padNum(show_date.getUTCMinutes()) + ":" + padNum(show_date.getUTCSeconds()));
             found = true;
             break;
         }
