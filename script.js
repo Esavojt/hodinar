@@ -17,6 +17,14 @@
     { name: "Ab/II-FEI", room: "PORK308", day: 3, start_hours: 14, start_minutes: 15, end_hours: 15, end_minutes: 45 }
 ];
  */
+
+function padNum(number){
+    if (number < 10) {
+    	return "0" + number;
+    }
+    return number;
+}
+
 var schedule = [];
 if (localStorage.getItem("schedule") != null) {
     schedule = JSON.parse(localStorage.getItem("schedule"));
@@ -53,11 +61,11 @@ function getUpcomingLesson() {
         var lesson_time = lesson.start_hours * 3600 + lesson.start_minutes * 60;
 
         if (time <= lesson_time) {
-            document.getElementById("text").innerText = lesson.name + " v místnosti " + lesson.room + " od " + lesson.start_hours + ":" + lesson.start_minutes + " do " + lesson.end_hours + ":" + lesson.end_minutes;
+            document.getElementById("text").innerText = lesson.name + " v místnosti " + lesson.room + " od " + lesson.start_hours + ":" + padNum(lesson.start_minutes) + " do " + lesson.end_hours + ":" + padNum(lesson.end_minutes);
 
             var show_date = new Date((lesson_time - time) * 1000);
 
-            document.getElementById("time_remaining").innerText = ("Zbývá: " + (show_date.getUTCHours() < 10 ? "0" : "") + show_date.getUTCHours() + ":" + (show_date.getUTCMinutes() < 10 ? "0" : "") + show_date.getUTCMinutes() + ":" + (show_date.getUTCSeconds() < 10 ? "0" : "") + show_date.getUTCSeconds());
+            document.getElementById("time_remaining").innerText = ("Zbývá: " + padNum(show_date.getUTCHours()) + ":" + padNum(show_date.getUTCMinutes()) + ":" + padNum(show_date.getUTCSeconds()));
 
             found = true;
             break;
@@ -89,12 +97,11 @@ function getActiveLesson(){
         var lesson_end_time = lesson.end_hours * 3600 + lesson.end_minutes * 60;
 
         if (time >= lesson_time && time <= lesson_end_time) {   
-            document.getElementById("active_lesson").innerHTML = "<b>" + lesson.name + (lesson.prednaska ? " (přednáška)" : "") + "</b> v místnosti <b>" + lesson.room + "</b> " + lesson.start_hours + ":" + lesson.start_minutes + " - " + lesson.end_hours + ":" + lesson.end_minutes;
+            document.getElementById("active_lesson").innerHTML = "<b>" + lesson.name + (lesson.prednaska ? " (přednáška)" : "") + "</b> v místnosti <b>" + lesson.room + "</b> " + lesson.start_hours + ":" + padNum(lesson.start_minutes) + " - " + lesson.end_hours + ":" + padNum(lesson.end_minutes);
 
             var show_date = new Date((lesson_end_time - time) * 1000);
 
-            document.getElementById("lesson_left").innerText = ("Zbývá: " + (show_date.getUTCHours() < 10 ? "0" : "") + show_date.getUTCHours() + ":" + (show_date.getUTCMinutes() < 10 ? "0" : "") + show_date.getUTCMinutes() + ":" + (show_date.getUTCSeconds() < 10 ? "0" : "") + show_date.getUTCSeconds());
-
+            document.getElementByID("lesson_left").innerText = ("Zbývá: " + padNum(show_date.getUTCHours()) + ":" + padNum(show_date.getUTCMinutes()) + ":" + padNum(show_date.getUTCSeconds()));
             found = true;
             break;
         }
